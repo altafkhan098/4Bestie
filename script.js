@@ -35,7 +35,7 @@ document.getElementById('magicBtn').addEventListener('click', function() {
         }, i * 50);
     }
     
-    const audio = new Audio('assets/music/Main Agar Kahoon.mp3');
+    const audio = new Audio('assets/music/𝙼𝚎𝚛𝚎 𝙺𝚑𝚠𝚊𝚋 𝙼𝚎𝚛𝚎 𝙺𝚑𝚊𝚢𝚊𝚕𝚘𝚗 𝙺𝚒 𝚁𝚊𝚗𝚒.mp3');
     audio.play();
 });
 
