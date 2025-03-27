@@ -1,0 +1,406 @@
+:root {
+    --primary: #ff6b88;
+    --secondary: #a18cd1;
+    --accent: #ff8e53;
+    --light: #fff5f5;
+    --dark: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--light) 0%, #f8f4ff 100%);
+    color: var(--dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Cosmic Background */
+.cosmos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    filter: blur(0.5px);
+    animation: twinkle var(--duration) infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: var(--opacity); transform: scale(1); }
+}
+
+/* Floating Islands */
+.floating-island {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    filter: blur(30px);
+    animation: floatIsland 30s infinite linear;
+    z-index: -1;
+}
+
+@keyframes floatIsland {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, 30px) rotate(5deg); }
+    50% { transform: translate(0, 60px) rotate(0deg); }
+    75% { transform: translate(-50px, 30px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Header with Glow Effect */
+header {
+    text-align: center;
+    padding: 10vh 0 6vh;
+    position: relative;
+}
+
+h1 {
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: titleUnderline 6s infinite;
+}
+
+@keyframes titleUnderline {
+    0%, 100% { transform: scaleX(0); }
+    50% { transform: scaleX(1); }
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+    color: var(--primary);
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    font-style: italic;
+}
+
+/* Magical Photo Carousel */
+.carousel-container {
+    perspective: 1000px;
+    max-width: 900px;
+    margin: 0 auto 8vh;
+    padding: 0 20px;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    transform-style: preserve-3d;
+    animation: rotateCarousel 30s infinite linear;
+}
+
+@keyframes rotateCarousel {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+.carousel:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover .carousel-caption {
+    transform: translateY(0);
+}
+
+/* Position each carousel item in a circle */
+.carousel-item:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(400px); }
+.carousel-item:nth-child(2) { transform: translate(-50%, -50%) rotateY(60deg) translateZ(400px); }
+.carousel-item:nth-child(3) { transform: translate(-50%, -50%) rotateY(120deg) translateZ(400px); }
+.carousel-item:nth-child(4) { transform: translate(-50%, -50%) rotateY(180deg) translateZ(400px); }
+.carousel-item:nth-child(5) { transform: translate(-50%, -50%) rotateY(240deg) translateZ(400px); }
+.carousel-item:nth-child(6) { transform: translate(-50%, -50%) rotateY(300deg) translateZ(400px); }
+
+/* Love Letter Section */
+.love-letter {
+    max-width: 700px;
+    margin: 0 auto 10vh;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.love-letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.love-letter::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    z-index: -2;
+    filter: blur(20px);
+    opacity: 0.3;
+    animation: letterGlow 6s infinite alternate;
+}
+
+@keyframes letterGlow {
+    0% { opacity: 0.2; }
+    100% { opacity: 0.4; }
+}
+
+.letter-content {
+    position: relative;
+    z-index: 1;
+}
+
+.letter-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Magic Button */
+.magic-btn {
+    display: block;
+    margin: 40px auto 0;
+    padding: 15px 40px;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 107, 136, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.magic-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 107, 136, 0.6);
+}
+
+.magic-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.magic-btn:hover::before {
+    transform: scale(1);
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    animation: floatUp 4s ease-in forwards;
+    z-index: 1000;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.music-player:hover {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+}
+
+/* Friendship Counter */
+.counter {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    color: var(--primary);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+}
+
+.counter::before {
+    content: '💖';
+    margin-right: 10px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(0.9); }
+    75% { transform: scale(1.05); }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .carousel {
+        height: 400px;
+    }
+    .carousel-item {
+        width: 250px;
+        height: 350px;
+    }
+    .carousel-item:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(300px); }
+    .carousel-item:nth-child(2) { transform: translate(-50%, -50%) rotateY(60deg) translateZ(300px); }
+    .carousel-item:nth-child(3) { transform: translate(-50%, -50%) rotateY(120deg) translateZ(300px); }
+    .carousel-item:nth-child(4) { transform: translate(-50%, -50%) rotateY(180deg) translateZ(300px); }
+    .carousel-item:nth-child(5) { transform: translate(-50%, -50%) rotateY(240deg) translateZ(300px); }
+    .carousel-item:nth-child(6) { transform: translate(-50%, -50%) rotateY(300deg) translateZ(300px); }
+}
+
+@media (max-width: 600px) {
+    .carousel {
+        height: 300px;
+    }
+    .carousel-item {
+        width: 200px;
+        height: 280px;
+    }
+    .carousel-item:nth-child(n) { 
+        transform: translate(-50%, -50%) rotateY(0deg) translateZ(0) !important;
+        position: relative;
+        margin-bottom: 20px;
+        left: auto;
+        top: auto;
+        transform: none !important;
+        display: none;
+    }
+    .carousel-item:nth-child(1), 
+    .carousel-item:nth-child(2), 
+    .carousel-item:nth-child(3) {
+        display: block;
+    }
+    .carousel {
+        animation: none;
+        height: auto;
+    }
+    .love-letter {
+        padding: 30px 20px;
+    }
+    .music-player, .counter {
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+        width: auto;
+    }
+    .counter {
+        text-align: center;
+        justify-content: center;
+    }
+}
